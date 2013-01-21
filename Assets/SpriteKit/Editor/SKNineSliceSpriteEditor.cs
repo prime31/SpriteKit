@@ -15,6 +15,9 @@ public class SKNineSliceSpriteEditor : SKSpriteEditor
 	{
 		var sprite = (SKNineSliceSprite)target;
 		
+		if( sprite.offsets == null )
+			sprite.offsets = new RectOffset( 15, 15, 15, 15 );
+		
 		GUILayout.BeginHorizontal();
 		sprite.offsets.left = (int)EditorGUILayout.FloatField( "left", sprite.offsets.left );
 		sprite.offsets.right = (int)EditorGUILayout.FloatField( "right", sprite.offsets.right );
@@ -26,9 +29,12 @@ public class SKNineSliceSpriteEditor : SKSpriteEditor
 		GUILayout.EndHorizontal();
 		
 		
-		// validate. just make sure the offsets are larger than the image
-		if( (float)sprite.offsets.horizontal > sprite.pixelPerfectHDSize.x || (float)sprite.offsets.vertical > sprite.pixelPerfectHDSize.y )
-			EditorGUILayout.HelpBox( "What the fuck are you thinking?", MessageType.Error );
+		if( sprite.spriteSheet != null )
+		{		
+			// validate. just make sure the offsets are larger than the image
+			if( (float)sprite.offsets.horizontal > sprite.pixelPerfectHDSize.x || (float)sprite.offsets.vertical > sprite.pixelPerfectHDSize.y )
+				EditorGUILayout.HelpBox( "Your offsets are bigger than your source image. Thats not gonna work too well.", MessageType.Error );
+		}
 		
 		base.OnInspectorGUI();
 	}

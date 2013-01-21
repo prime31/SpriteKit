@@ -81,7 +81,7 @@ public static class SKTextureUtil
 	}
 	
 	
-	public static SKSpriteSheet createSpriteSheet( string name, string sourceFolder, bool generateSdTexture, int cameraOrthoSize )
+	public static SKSpriteSheet createSpriteSheet( string name, string sourceFolder, bool generateSdTexture, int cameraOrthoSize, int targetScreenHeight )
 	{
 		// validate that there are images in the folder and that the name has not been used
 		var allSpriteSheets = getAllSpriteSheets();
@@ -105,6 +105,7 @@ public static class SKTextureUtil
 		sheet.imageSourceFolder = sourceFolder;
 		sheet.hasHdAtlas = generateSdTexture;
 		sheet.cameraOrthoSize = cameraOrthoSize;
+		sheet.targetScreenHeight = targetScreenHeight;
 		sheet.refreshSourceImages();
 		
 		// material creation

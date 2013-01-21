@@ -56,7 +56,7 @@ public class SKNewSpriteSheetWizard : ScriptableWizard
 			if( _sourceFolder == null || _sourceFolder == string.Empty )
 				return;
 			
-			SKTextureUtil.createSpriteSheet( Path.GetFileName( _sourceFolder ), _sourceFolder, _generateSDTexture, _orthoSize );
+			SKTextureUtil.createSpriteSheet( Path.GetFileName( _sourceFolder ), _sourceFolder, _generateSDTexture, _orthoSize, _targetScreenHeight );
 			Close();
 		}
 	}
