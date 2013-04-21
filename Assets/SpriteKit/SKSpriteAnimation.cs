@@ -37,7 +37,7 @@ public class SKSpriteAnimation
 	private bool _isReversed; // have we been reversed? this is different than a PingPong loop's backwards section
 	private bool _isLoopingBackOnPingPong;
 	private int _completedIterations;
-	private int _currentFrame = 0;
+	private int _currentFrame = -1;
 	
 	
 	public SKSpriteAnimation( SKSprite sprite )
@@ -184,7 +184,9 @@ public class SKSpriteAnimation
 	public void stop()
 	{
 		// reset all state
-		_elapsedTime = _elapsedDelay = _totalElapsedTime = _completedIterations = _currentFrame = 0;
+		// we reset CurrentFrame to zero to force play the first frame immediately
+		_currentFrame = -1;
+		_elapsedTime = _elapsedDelay = _totalElapsedTime = _completedIterations = 0;
 		_isReversed = _isLoopingBackOnPingPong = false;
 		_isStopped = true;
 	}
