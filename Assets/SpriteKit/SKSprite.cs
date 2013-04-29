@@ -95,8 +95,15 @@ public class SKSprite : MonoBehaviour
 	{
 		renderer.material = null;
 	}
-	
-	
+
+
+    public void setColor( Color tint )
+    {
+        tintColor = tint;
+        meshFilter.sharedMesh.colors32 = new Color32[] { tint, tint, tint, tint };
+    }
+
+
 	public void generateMesh()
 	{
 		if( spriteSheet == null || sourceImageName == null )
@@ -338,8 +345,12 @@ public class SKSprite : MonoBehaviour
 		if( _isFlipped )
 			flipHorizontally();
 	}
-	
-	
+
+    public void rotate( float degrees )
+    {
+        transform.localEulerAngles = new Vector3( 0, 0, degrees );
+    }
+
 	#region Animations
 	
 	void Update()
@@ -367,7 +378,6 @@ public class SKSprite : MonoBehaviour
 		}
 	}
 
-	
 	public void preloadAnimations( params string[] names )
 	{
 		if( animations == null )
@@ -392,7 +402,15 @@ public class SKSprite : MonoBehaviour
 		
 		currentAnimation.animationState = animations[name];
 	}
-	
+
+
+    public void playAnimation( string name )
+    {
+        if ( currentAnimation == null || !animations.ContainsKey( name ) || currentAnimation.animationState != animations[name] )
+        {
+            startAnimation( name );         
+        }
+    }
 	#endregion
 	
 }

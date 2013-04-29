@@ -163,8 +163,18 @@ public class SKSpriteAnimation
 		// if we are looping back on a PingPong loop
 		var convertedElapsedTime = _isLoopingBackOnPingPong ? _duration - _elapsedTime : _elapsedTime;
 		
+        //Adjust the converted elapsed time when doing a pingpong loopback so the last frame is not 
+        //displayed 2x longer than other frames
+        if ( _isLoopingBackOnPingPong && _duration - _elapsedTime > _secondsPerFrame )
+            convertedElapsedTime = _duration - _elapsedTime - _secondsPerFrame;
 		
 		var desiredFrame = Mathf.FloorToInt( convertedElapsedTime / _secondsPerFrame );
+
+        //Adjust for the total elapsed time when in ping-pong mode so frame 0 is not displayed 2x 
+        //longer than other frames
+        if ( _isLoopingBackOnPingPong && desiredFrame == 0 )
+            _totalElapsedTime += _secondsPerFrame;
+
 		if( desiredFrame != _currentFrame )
 		{
 			_currentFrame = desiredFrame;
