@@ -28,7 +28,7 @@ public class SKSpriteEditor : Editor
 			
 			if( GUILayout.Button( "Set Size to Image Size" ) )
 			{
-				Undo.RegisterUndo( _sprite, "Undo Make Pixel Perfect" );
+				Undo.RecordObject( _sprite, "Undo Make Pixel Perfect" );
 				_sprite.desiredSize = _sprite.pixelPerfectHDSize;
 				GUI.changed = true;
 			}
