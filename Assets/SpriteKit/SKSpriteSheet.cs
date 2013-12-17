@@ -33,7 +33,7 @@ public class SKSpriteSheet : ScriptableObject
 	public static SKSpriteSheet sheetWithName( string name )
 	{
 		// first we check to see if the sprite sheet is already in play
-		var sheets = FindObjectsOfTypeIncludingAssets( typeof( SKSpriteSheet ) );
+		var sheets = Resources.FindObjectsOfTypeAll( typeof( SKSpriteSheet ) );
 		for( var i = 0; i < sheets.Length; i++ )
 		{
 			var sheet = sheets[i] as SKSpriteSheet;
@@ -48,7 +48,7 @@ public class SKSpriteSheet : ScriptableObject
 	
 	public static SKSpriteSheet sheetWithSprite( string spriteName )
 	{
-		var sheets = FindObjectsOfTypeIncludingAssets( typeof( SKSpriteSheet ) );
+		var sheets = Resources.FindObjectsOfTypeAll( typeof( SKSpriteSheet ) );
 		for( var i = 0; i < sheets.Length; i++ )
 		{
 			var sheet = sheets[i] as SKSpriteSheet;
@@ -62,7 +62,7 @@ public class SKSpriteSheet : ScriptableObject
 	
 	public static SKSpriteSheet sheetWithImageSourceFolder( string imageSourceFolder )
 	{
-		var sheets = FindObjectsOfTypeIncludingAssets( typeof( SKSpriteSheet ) );
+		var sheets = Resources.FindObjectsOfTypeAll( typeof( SKSpriteSheet ) );
 		for( var i = 0; i < sheets.Length; i++ )
 		{
 			var sheet = sheets[i] as SKSpriteSheet;

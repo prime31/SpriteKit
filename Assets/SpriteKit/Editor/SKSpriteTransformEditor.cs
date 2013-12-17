@@ -34,11 +34,12 @@ public class SKSpriteTransformEditor : Editor
                 
                 GUILayout.Space( 5f );
 
-                EditorGUIUtility.LookLikeInspector();
+                EditorGUIUtility.LookLikeControls();
 
                 if( GUI.changed || clicked )
                 {
-                    Undo.RegisterUndo( transform, "Transform Change" );
+                    Undo.RecordObject( transform, "Transform Change" );
+
 					
 					sprite.scale = scale;
 					transform.localEulerAngles = eulers;
@@ -54,11 +55,11 @@ public class SKSpriteTransformEditor : Editor
             Vector3 position = EditorGUILayout.Vector3Field( "Position", transform.localPosition );
             Vector3 eulerAngles = EditorGUILayout.Vector3Field( "Rotation", transform.localEulerAngles );
             Vector3 scale = EditorGUILayout.Vector3Field( "Scale", transform.localScale );
-            EditorGUIUtility.LookLikeInspector();
+            EditorGUIUtility.LookLikeControls();
 
             if( GUI.changed )
             {
-                Undo.RegisterUndo( transform, "Transform Change" );
+                Undo.RecordObject( transform, "Transform Change" );
 
                 transform.localPosition = fixIfNaN( position );
                 transform.localEulerAngles = fixIfNaN( eulerAngles );
