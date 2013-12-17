@@ -100,7 +100,12 @@ public class SKSprite : MonoBehaviour
     public void setColor( Color tint )
     {
         tintColor = tint;
-        meshFilter.sharedMesh.colors32 = new Color32[] { tint, tint, tint, tint };
+        Color32[] colors = new Color32[meshFilter.sharedMesh.colors32.Length];
+
+        for (int i = 0; i < meshFilter.sharedMesh.colors32.Length; i++)
+            colors[i] = tint;
+
+        meshFilter.sharedMesh.colors32 = colors;
     }
 
 
