@@ -1,6 +1,9 @@
 SpriteKit
 =========
 
+SpriteKit has been superceded by the built-in Unity 2D tools. This repository is unmaintained and here for historical reference only.
+
+
 SpriteKit is a lightweight sprite creation and animation library. It is designed to do a few things and then get out of your way.
 
 
